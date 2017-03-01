@@ -16,7 +16,7 @@ To smoothen the slow motion effect this timeRange can be EASED in and out of the
 
 This parabolic effect causes the ramp. 
 
-Within the AssetConfig file, the <b>downWithRamp(...)</b> method allows for this to happen.
+Within the  <span style = "background= color : #C0C0C0" > AssetConfig </span>  class , the <b>downWithRamp(...)</b> method allows for this to happen.
 
 
 <b> ISSUES </b> : 
