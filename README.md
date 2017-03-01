@@ -1,7 +1,7 @@
 # RampedSlowMotionExample
 
 
-This example demonstrates a ramped SlowMotion effect in Swift 3.0 
+This simple example demonstrates a ramped SlowMotion effect in Swift 3.0 
 
 Traditional slow motion looks like this 
 
