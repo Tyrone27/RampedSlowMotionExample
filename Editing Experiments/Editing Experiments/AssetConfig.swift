@@ -115,52 +115,7 @@ class AssetConfig {
         
     }
     
-    func slowDownWithRamp(asset : AVMutableComposition){
-        
-        
-        // Initials
-        let fps =               Int32(asset.tracks(withMediaType: AVMediaTypeVideo).first!.nominalFrameRate)
-        let sumTime =           Int32(asset.duration.value)  /  asset.duration.timescale;
-        let totalFrames =       sumTime * fps
-        let totalTime =         Float(CMTimeGetSeconds(asset.duration))
-        let frameDuration =     Double(totalTime / Float(totalFrames))
-        let frameTime =         CMTime(seconds: frameDuration, preferredTimescale: 1000000)
-       //   let frameTime =         CMTimeMultiplyByFloat64(CMTime(value: 1, timescale: 1) , Float64(frameDuration))
-        
-        //
-        
-        
-        let x1 : Double = 50
-        let x2 : Double = 150
-       
-        
-        let parts =         (x2 - x1)/10
-        
-        let x1Time =        CMTimeMultiplyByFloat64(frameTime, x1)
-        let x2Time =        CMTimeMultiplyByFloat64(frameTime, x2)
-        let tenthDuration = CMTimeMultiplyByFloat64(CMTimeSubtract(x2Time, x1Time) , 1/10)
-        
-        var scaleFactor = 1.0
-
-        var timing =     CMTimeMultiplyByFloat64(frameTime, Float64(x1))
-
-        for x in Swift.stride(from: x1, to: x2, by: parts ){
-            
-            print("\(x)th Frame")
-            let factor =    CMTimeMultiplyByFloat64( tenthDuration , 1 / scaleFactor)       //scale to this time
-            print("This range will be scaled by \(CMTimeGetSeconds(factor)) seconds")
-            let timeRange =    CMTimeRange(start: timing, duration : tenthDuration)
-            print("TimeRange    =  \(CMTimeGetSeconds(timeRange.start)) - \(CMTimeGetSeconds(timeRange.end))secs ")
-               asset.scaleTimeRange(timeRange , toDuration: factor)
-            if x < x1 + (x2 - x1)/2 {                                     // the parabolic ramp :to turn off , use the else cond. delete rest
-                scaleFactor = scaleFactor + 0.2 }
-            else {scaleFactor = scaleFactor - 0.2  }
-            timing = CMTimeAdd(timing, factor)
-            print()
-        }
-        
-        
-    }
+   
 
     
     
