@@ -19,7 +19,7 @@ This parabolic effect causes the ramp.
 Within the AssetConfig file, the <b>downWithRamp(...)</b> method allows for this to happen.
 
 
-<h4> ISSUES <h4> : 
+<b> ISSUES </b> : 
 
 There is however an arbitrary blank ramped segment within the video when exported. You will understand when you run the project for yourself.
 
